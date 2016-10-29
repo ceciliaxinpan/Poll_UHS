@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import firebase from 'firebase';
 
+import FBConfig from './FBConfig';
 import ResultChart from './Components/ResultChart';
 import Poll from './Components/Poll';
 
@@ -19,14 +20,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-     const config = {
-      apiKey: "AIzaSyBh3ovibfobnNHNVh8FAzEHnuF_D6emTYw",
-      authDomain: "pollsuhs.firebaseapp.com",
-      databaseURL: "https://pollsuhs.firebaseio.com",
-      storageBucket: "",
-      messagingSenderId: "751727525041"
-    };
-    firebase.initializeApp(config);
+    firebase.initializeApp(FBConfig);
     // this.createSeedPolls()
     this.getPollWith()
   }
