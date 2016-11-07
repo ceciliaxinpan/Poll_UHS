@@ -9,7 +9,7 @@ export default (props) => {
   let survey = new Survey.ReactSurveyModel(data);
 
   return props.hidden ? null : (
-    <div>
+    <div className='col-md-12' id='poll'>
 	    <Survey.Survey 
 	    model={survey} 
 	    onComplete={props.submitPoll} 

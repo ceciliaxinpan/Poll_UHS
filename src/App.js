@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import firebase from 'firebase';
-
 import FBConfig from './FBConfig';
 import ResultChart from './Components/ResultChart';
+import BarChart from './Components/BarChart';
 import Poll from './Components/Poll';
 
+const firebase = window.firebase;
 class App extends Component {
 
   constructor(props) {
@@ -97,6 +97,7 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <div>
 
@@ -107,10 +108,11 @@ class App extends Component {
         hidden={this.state.hasMadeChoice}
         />
 
-        <ResultChart
-        hidden={!this.state.hasMadeChoice}
+        <BarChart
         data={this.state.pollResult}
+        hidden={!this.state.hasMadeChoice}
         />
+
       </div>
     );
   }

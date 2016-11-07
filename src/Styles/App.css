@@ -22,3 +22,13 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+@media (min-width: 2000px) {
+  .form-inline .radio {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+
