@@ -9,10 +9,10 @@ export default (props) => {
 	        {
 	            label: "Results",
 	            fillColor: [
-	                'rgba(255, 99, 132, 0.2)',
-	                'rgba(54, 162, 235, 0.2)',
-	                'rgba(255, 206, 86, 0.2)',
-	                'rgba(75, 192, 192, 0.2)',
+	                'rgba(204, 0, 0, 1)',
+	                'rgba(51, 51, 204, 1)',
+	                'rgba(51, 153, 51, 1)',
+	                'rgba(255, 102, 0, 1)',
 	            ],
 	            borderWidth: 1,
 	            data: [],

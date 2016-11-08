@@ -8,9 +8,9 @@
   "dependencies": {
     "chart.js": "^1.1.1",
     "react": "^15.3.2",
+    "react-bootstrap": "^0.30.6",
     "react-chartjs": "^0.8.0",
-    "react-dom": "^15.3.2",
-    "survey-react": "^0.10.0"
+    "react-dom": "^15.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

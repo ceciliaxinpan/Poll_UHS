@@ -23,12 +23,9 @@
   to { transform: rotate(360deg); }
 }
 
-@media (min-width: 2000px) {
-  .form-inline .radio {
-    display: block;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
+#pl-poll .col-xs-3 {
+  padding: 0;
 }
+
 
 
