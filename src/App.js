@@ -22,15 +22,17 @@ class App extends Component {
 
   componentDidMount() {
     firebase.initializeApp(FBConfig);
-    this.createSeedPolls()
+    // this.createSeedPolls();
     this.getPollWith()
   }
 
-  getPollWith(pollIdx = 0) {
+  getPollWith() {
     const pollRef = firebase.database().ref("polls");
     pollRef.once('value').then(function(snapshot){
       const polls = snapshot.val() || {};
       const pollKeys = Object.keys(polls);
+      // Fetch the last object in the question array from database
+      const pollIdx = (pollKeys.length > 0) ? (pollKeys.length - 1) : 0;
       const targetPollKey = pollKeys[pollIdx];
       const pollData = polls[targetPollKey];
       pollData['id'] = targetPollKey;
@@ -46,13 +48,13 @@ class App extends Component {
     resultRef.on('value', function(snapshot){
       const pollResult = snapshot.val() || [];
       this.setState({pollResult});
-      console.log(pollResult);
+      // console.log(pollResult);
     }.bind(this));
   }
 
   submitPoll(idx) {
 
-    console.log(this.state.pollData);
+    // console.log(this.state.pollData);
     this.setState({hasMadeChoice: true});
 
     let newResult = [];
@@ -100,6 +102,15 @@ class App extends Component {
   render() {
 
     const placeholders = PLConstance.placeholders;
+
+    // Handle the case when there is no pollData available
+    if(!this.state.pollData.title) {
+        return(
+            <div id={PLConstance.styles.ids.pollApp}>
+                There is no polling today :)
+            </div>
+        )
+    }
 
     return (
       <div id={PLConstance.styles.ids.pollApp}>

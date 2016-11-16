@@ -31,7 +31,7 @@ export default (props) => {
 	props.data.forEach((data) => {
 		chartData.labels.push(data.choice);
 		chartData.datasets[0].data.push(data.count);
-		console.log(chartData.labels);
+		// console.log(chartData.labels);
 	});
 
 	return props.hidden ? null :(

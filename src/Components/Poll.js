@@ -6,8 +6,9 @@ import PLConstance from '../Utils/Constance';
 export default (props) => {
 
     const data = props.pollData;
+    const numOfChoicesPerRow = 2;
 
-    console.log("In polling", data);
+    // console.log("In polling", data);
     const pollTitle = data.title || "Loading...";
 
     let pollChoices;
@@ -16,9 +17,12 @@ export default (props) => {
 
             const btnStyle = {
                 backgroundImage: 'url(' + data.imgURLs[idx] + ')',
-                backgroundSize: 'cover',
-                height: '60px',
-                width: '60px',
+                backgroundSize: '100px 100px',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundColor: 'rgba(0,0,0,0)',
+                height: '100px',
+                width: '100%'
             };
 
             const popOverStyle = {
@@ -35,14 +39,14 @@ export default (props) => {
             };
 
             return (
-                <div className='col-xs-3' key={choice}>
+                <div className={'col-xs-' + `${12 / numOfChoicesPerRow}`} key={choice}>
                     <OverlayTrigger
                         trigger={['hover', 'focus']}
                         placement={props.placement || "bottom"}
                         overlay={
                             <Popover
                                 id={choice}
-                                title={ choice }
+                                title={ 'Vote for ' + choice }
                                 style={ popOverStyle }
                             />
                         }
@@ -58,14 +62,30 @@ export default (props) => {
         });
     }
 
+    let tempArr = [];
+    let rows = [];
+    if(pollChoices) {
+        pollChoices.forEach((choice, idx) => {
+            tempArr.push(choice);
+            if((idx + 1) % numOfChoicesPerRow === 0 || (idx + 1)  === pollChoices.length) {
+                rows.push(
+                    <div className="col-xs-12" key={idx}>
+                        {tempArr}
+                    </div>
+                );
+                tempArr = [];
+            }
+        });
+    }
+
     return props.hidden ? null : (
         <div id={PLConstance.styles.ids.pollPage}>
             <h4>
                 {pollTitle}
             </h4>
 
-            <div className='col-xs-12' id={PLConstance.styles.ids.pollChoices}>
-                {pollChoices}
+            <div id={PLConstance.styles.ids.pollChoices}>
+                {rows}
             </div>
         </div>
     );
