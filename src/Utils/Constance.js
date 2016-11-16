@@ -4,7 +4,9 @@
 const PLConstance = {
     styles: {
         ids: {
-            pollPage: 'pl-poll'
+            pollApp: 'pl-app',
+            pollPage: 'pl-poll',
+            pollChoices: 'pl-choices',
         },
 
         classes: {

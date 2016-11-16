@@ -64,7 +64,7 @@ export default (props) => {
                 {pollTitle}
             </h4>
 
-            <div className='col-xs-12'>
+            <div className='col-xs-12' id={PLConstance.styles.ids.pollChoices}>
                 {pollChoices}
             </div>
         </div>

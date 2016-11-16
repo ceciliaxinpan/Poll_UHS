@@ -3,6 +3,14 @@ import React from 'react';
 import {Bar} from 'react-chartjs';
 
 export default (props) => {
+
+    const chartOption = {
+        scaleGridLineColor: "rgba(255,255,255,1)",
+        scaleGridLineWidth: 0.5,
+        pointLabelFontColor: "rgba(255,255,255,1)",
+        scaleFontColor: "rgba(255,255,255,1)"
+    };
+
 	let chartData = {
 	    labels: [],
 	    datasets: [
@@ -24,9 +32,9 @@ export default (props) => {
 		chartData.labels.push(data.choice);
 		chartData.datasets[0].data.push(data.count);
 		console.log(chartData.labels);
-	})
+	});
 
 	return props.hidden ? null :(
-	<Bar data={chartData} />
+	<Bar data={chartData} options={chartOption} />
 	);
 }
